@@ -248,7 +248,9 @@ section {
     margin-bottom: 24px;
     text-align: center;
     font-size: 1rem;
-    word-break: keep-all; /* モバイルでの不自然な改行を防ぐ */
+    white-space: normal;       /* 基本の自動折り返しを有効化 */
+    word-break: break-all;     /* 英語などの長い単語も端で強制折り返し */
+    overflow-wrap: break-word; /* 画面端での安全な改行を保証 */
 }
 
 /* ==========================================================================
@@ -681,6 +683,16 @@ section {
     .timeline-content { padding-left: 40px; }
     .timeline-content::before { left: -23px; }
     .forms-iframe-container { height: 500px; } /* スマホ用に高さをフィット */
+   /* 手紙のコンテナ自体がスマホ幅に収まるようパディングを調整 */
+    .letter-container {
+        padding: 40px 20px; /* 左右の余白を狭めて文字の一行の幅を確保 */
+        margin: 0 10px;     /* 画面の端にぴったりくっつくのを防ぐ */
+    }
+   .letter-text {
+        font-size: 0.95rem; /* スマホで見やすいように少しだけ文字を小さく */
+        line-height: 2;     /* 行間を少し広げて読みやすく */
+        text-align: left;   /* 中央揃えだとスマホでガタつく場合は左揃え、好みでcenterでもOK */
+    }
 }
 
 @media (max-width: 480px) {
